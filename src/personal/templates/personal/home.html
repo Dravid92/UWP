@@ -8,8 +8,8 @@
 	<p>{{some_string}}</p>
 	<p>{{Themes}}</p>
 
-	{% for item in list_of_values %}
-			{%include 'personal/snippets/body_snippet.html' with items=item %}
+	{% for question in questions %}
+			{%include 'personal/snippets/body_snippet.html' with items=question %}
 	{% endfor %}
 
 </div>
