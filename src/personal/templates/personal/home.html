@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="border: 2px solid #000;">
+	<h1> About us </h1>
+	<p>Here is where you put the introduction of UWP , University Wellness program(UWP)is an platform that can act as a tool,resource and a social media for sharing your contribution towards the growth of the university  </p>
+
+	<p>{{some_string}}</p>
+	<p>{{Themes}}</p>
+
+	{% for item in list_of_values %}
+			{%include 'personal/snippets/body_snippet.html' with items=item %}
+	{% endfor %}
+
+</div>
+
+{% endblock content %}
+
+
