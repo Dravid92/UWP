@@ -45,7 +45,7 @@ class Account(AbstractBaseUser):
 	objects = MyAccontManager()
 
 	def __str__(self):
-		return self.email
+		return self.email + ',' + self.username
 	def has_perm(self,perm,obj = None):
 		# they have permission if the user is an admin and can change models
 		return self.is_admin

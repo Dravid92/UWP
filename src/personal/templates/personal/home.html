@@ -7,9 +7,9 @@
 
 	<p>{{some_string}}</p>
 	<p>{{Themes}}</p>
-
-	{% for question in questions %}
-			{%include 'personal/snippets/body_snippet.html' with items=question %}
+	<h2>Users:</h2>
+	{% for account in accounts %}
+			<p>{{account.username}}</p>
 	{% endfor %}
 
 </div>
