@@ -2,7 +2,8 @@
 
 {% block content %}
 
-
+<div class='container'>
+	<div class = 'd-flex flex-column'>
 <h2>Login</h2>
 <form method="post">{% csrf_token %}
 	{% for field in login_form %}
@@ -30,5 +31,6 @@
 		
 	<button type="submit">Log in</button>
 </form>
+</div>
 
 {% endblock content %}

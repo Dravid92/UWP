@@ -2,19 +2,49 @@
 
 {% block content %}
 
-<hr>
-	<h1> About us </h1>
-	<p>Here is where you put the introduction of UWP , University Wellness program(UWP)is an platform that can act as a tool,resource and a social media for sharing your contribution towards the growth of the university  </p>
+<div class="jumbotron">
+    <div class="container">
+    <h1>University Wellness Program</h1>
+      <h1> About us </h1>
+  <p>Here is where you put the introduction of UWP , University Wellness program(UWP)is an platform that can act as a tool,resource and a social media for sharing your contribution towards the growth of the university  </p>
+      {% if request.user.is_authenticated %}
+      <h4 class="display-8">Hello, {{request.user.username}}</h4>
+      <hr>
+      <div class="container">
+	    <div class="row mb-2">
+	    <div class="col-md-6">
+	      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+	        <div class="col p-4 d-flex flex-column position-static">
+	          <strong class="d-inline-block mb-2 text-primary">World</strong>
+	          <h3 class="mb-0">Featured post</h3>
+	          <div class="mb-1 text-muted">Date</div>
+	          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+	          <a href="#" class="stretched-link">Continue reading</a>
+	        </div>
+	      </div>
+	    </div>
+      {% else %}
+      <p><a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Register &raquo;</a>
+      	<a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login &raquo;</a></p> 
+    </div>
+  </div>
+  {% endif %}
+<div class="container">
+    <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">Featured post</h3>
+          <div class="mb-1 text-muted">Date</div>
+          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+      </div>
+    </div>
+    
 
-	<p>{{some_string}}</p>
-	<p>{{Themes}}</p>
-	<hr>
-	<h3>Registered Users : </h3>
-	{% for account in accounts %}
-			<p>{{account.email}}</p>
-	{% endfor %}
 
-</div>
 
 {% endblock content %}
 
