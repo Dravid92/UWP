@@ -2,33 +2,75 @@
 
 {% block content %}
 
+<div class='container'>
+	<div class = 'd-flex flex-column'>
+<style type="text/css">
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
 
-	<h2>Account</h2>
-	<form method="post">{% csrf_token %}
-		{% for field in account_form %}
-			<p>
-				{{field.label_tag}}
-				{{field}}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
 
-				{% if field.help_text %}
-					<small style = "color: grey;">{{field.help_text}}</small>
-				{% endif %}
-			</p> 
-		{% endfor %}
-		{% for field in account_form %}
-			{% for error in field.errors %}
+</style>
+
+<form class="form-signin" method="POST">{% csrf_token %}
+	
+	<h1 class="h3 mb-3 font-weight-normal">My Account</h1>
+	<label for="inputEmail" class="sr-only">Email address</label>
+	<input type="email" name = 'email' id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+	<label for="inputPassword" class="sr-only">Password</label>
+	<input type="text" name = 'userna<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{request.user.username}}</a>
+	<div class="dropdown-menu" aria-labelledby="dropdown01">
+	  <a class="nav-link" href="{% url 'account' %}">My Account</a>
+
+	  <a class="dropdown-item" href="#">Projects</a>
+	  <a class="dropdown-item" href="#">User Settings</a>
+	  {% if request.user.is_authenticated %}
+	  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+	  {% else %}
+	  <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+	  {% endif %}me' id="inputusername" class="form-control" placeholder="username" required 
+	value = "{{account_form.intial.username}}">
+	
+	{% for field in account_form %}
+		<p>
+			{% for field in account_form %}
 				<p style="color: red;">{{error}}</p>
 			{% endfor %}
-		{% endfor %}
+		</p>
+	{% endfor %}
+	{% if account_form.non_field_errors %}
+		<div style="color: red;">
+			<p>{{account_form.non_field_errors}}</p>
+		</div>
+	{% endif %}
 
 
-		{% if account_form.non_field_errors %}
-			<div style="color: red;">
-				<p>{{account_form.non_field_errors}}</p>
-			</div>
-		{% endif %}
-			
-		<button type="submit">Log in</button>
-	</form>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Save Changes</button>
+
+  </form>
+
 
 {% endblock content %}
