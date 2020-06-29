@@ -1,64 +1,98 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
+<style type="text/css">
 
-<div class="jumbotron">
-    <div class="container">
-    <h1>University Wellness Program</h1>
-      <h1> About us </h1>
-  <p>Here is where you put the introduction of UWP , University Wellness program(UWP)is an platform that can act as a tool,resource and a social media for sharing your contribution towards the growth of the university  </p>
-      {% if request.user.is_authenticated %}
-      <h4 class="display-8">Hello, {{request.user.username}}</h4>
-      <div class="grid ai-centre mb16">
-        <div class="grid--cell f11 fs-body3"></div>
-      <div class = "grid--cell">
-        <div class=" grid s-btn-group js-filter-btn">
-          <a class="youarehere is-selected grid--cell s-btn s-btn__muted s-btn__outlined" href="?tab=interesting" data-nav-xhref="" title="Questions that may be of interest to you based on your history and tag preference" data-value="interesting" data-shortcut="">
-              Interesting</a>
-          <a class="grid--cell s-btn s-btn__muted s-btn__outlined" href="?tab=hot" data-nav-xhref="" title="Questions with the most views, answers, and votes over the last few days" data-value="hot" data-shortcut="H">
-              Hot</a>
-          <a class="grid--cell s-btn s-btn__muted s-btn__outlined" href="?tab=week" data-nav-xhref="" title="Questions with the most views, answers, and votes this week" data-value="week" data-shortcut="W">
-              Week</a>
-          <a class="grid--cell s-btn s-btn__muted s-btn__outlined" href="?tab=month" data-nav-xhref="" title="Questions with the most views, answers, and votes this month" data-value="month" data-shortcut="M">
-              Month</a>
-        </div>
-      </div>
-      </div>
-      <hr>
-      <div class="container">
-	    <div class="row mb-2">
-	    <div class="col-md-6">
-	      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-	        <div class="col p-4 d-flex flex-column position-static">
-	          <strong class="d-inline-block mb-2 text-primary">World</strong>
-	          <h3 class="mb-0">Featured post</h3>
-	          <div class="mb-1 text-muted">Date</div>
-	          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-	          <a href="#" class="stretched-link">Continue reading</a>
-	        </div>
-	      </div>
-	    </div>
-      {% else %}
-      <p><a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Register &raquo;</a>
-      	<a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login &raquo;</a></p> 
-    </div>
-  </div>
-  {% endif %}
+	@media (max-width: 768px) { 
+		.right-column{
+			margin-left: 0px;
+		}
+	}
+
+	@media (min-width: 768px) { 
+		.right-column{
+			margin-left: 20px;
+		}
+	}
+
+	.blog-post-container{
+		margin-bottom: 20px;
+		width: 100%;
+	}
+	.create-post-bar{
+		background-color: #fff;
+		margin-bottom:20px;
+	}
+
+	.left-column{
+		padding:0px;
+	}
+
+	.right-column{
+		padding:0px;
+	}
+	.lead{
+		font-size: 17px;
+	}
+</style>
+
+
+<!-- main content -->
 <div class="container">
-    <div class="row mb-2">
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
-          <h3 class="mb-0">Featured post</h3>
-          <div class="mb-1 text-muted">Date</div>
-          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
-        </div>
-      </div>
-    </div>
-    
+	<div class="row">
 
+		<!-- blog feed -->
+		<div class="left-column col-lg-7 offset-lg-1">
+
+			<!-- Top 'create post' bar -->
+			<div class="d-lg-none mb-3">
+				<div class="card m-auto d-flex flex-column p-3">
+					<img class="img-fluid d-block m-auto pb-2" src="{% static 'ubuntu-icon.svg' %}" width="72" height="72">
+					<p class="lead">In this course you'll learn how to build a simple blog with user registration and blog CRUD functionality. Django is a powerful 
+	  					framework and you'll see why in this course.</p>
+					<p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:create' %}">Create post</a></p>
+				</div>
+			</div>
+			<!-- end Top 'create post' bar -->
+
+			<!-- Blog posts-->
+			{% if blog_posts %}
+				{% for post in blog_posts %}
+					<div class="blog-post-container">
+						{% include 'blog/snippets/blog_post_snippet.html' with blog_post=post %}
+					</div>
+				{% endfor %}
+			{% else %}
+				<div class="blog-post-container">
+					{% include 'blog/snippets/blog_post_snippet.html' with query=query %}
+				</div>
+			{% endif %}
+			<!-- End Blog posts-->
+
+		<!-- Pagination -->
+		{% include 'blog/snippets/blog_post_pagination.html' with blog_posts=blog_posts %}
+
+		</div>
+		<!-- end blog feed -->
+
+
+		<!-- Right 'create post' column  -->
+		<div class="right-column col-lg-3 d-lg-flex d-none flex-column">
+
+			<div class="card create-post-bar d-flex flex-column p-3">
+				<img class="img-fluid d-block m-auto pb-2" src="{% static 'codingwithmitch_logo.png' %}" width="72" height="72">
+				<p class="lead">In this course you'll learn how to build a simple blog with user registration and blog CRUD functionality. Django is a powerful 
+  					framework and you'll see why in this course.</p>
+				<p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:create' %}">Create post</a></p>
+			</div>
+		
+		</div>
+		<!-- end Right 'create post' column  -->
+
+
+
+	</div>
+</div>
 
 
 {% endblock content %}

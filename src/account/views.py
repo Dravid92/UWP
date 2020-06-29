@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login,authenticate ,logout
 from account.forms import RegistrationForm,AccountAuthernticationForm,AccountUpdateForm
 
-
+from blog.models import BlogPost
 # Create your views here.
 def registration_view(request):
 	context = {}
@@ -54,26 +54,34 @@ def login_view(request):
 	return render(request,'account/login.html',context)
 
 def account_view(request):
+
 	if not request.user.is_authenticated:
-		return redirect("login")
+			return redirect("login")
 
 	context = {}
-
 	if request.POST:
-		form = AccountUpdateForm(request.POST,instance = request.user)
+		form = AccountUpdateForm(request.POST, instance=request.user)
 		if form.is_valid():
 			form.initial = {
-				"email":request.POST['email'],
+				"email": request.POST['email'], 
 				"username": request.POST['username'],
 			}
 			form.save()
-			context['success_message'] ="Updated Successfully"
+			context['success_message'] = "Updated"
+	
 	else:
 		form = AccountUpdateForm(
-				initial = {
-					"email" :request.user.email,
-					"username" :request.user.username,
+			initial={
+					"email": request.user.email, 
+					"username": request.user.username,
 				}
 			)
+
 	context['account_form'] = form
-	return render(request,'account/account.html',context)
+
+	blog_posts = BlogPost.objects,filter(author = request.user)
+	context['blog_posts'] = blog_posts
+	return render(request, "account/account.html", context)
+
+def must_authenticate_view(request):
+	return render(request, 'account/must_authenticate.html', {})
