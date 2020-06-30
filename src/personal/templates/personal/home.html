@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
 <style type="text/css">
 
@@ -34,67 +35,150 @@
 	.lead{
 		font-size: 17px;
 	}
+	/* Make the image fully responsive */
+	.carousel-inner img {
+		width: 100%;
+		height: 100%;
+	}
+	.vl {
+  border-left: 6px solid green;
+  height: 500px;
+}
+.mycontent-left {
+  border-right: 1px dashed #333;
+}
 </style>
 
+<div id="demo" class="carousel slide" data-ride="carousel">
 
-<!-- main content -->
+	<!-- Indicators -->
+	<ul class="carousel-indicators">
+	  <li data-target="#demo" data-slide-to="0" class="active"></li>
+	  <li data-target="#demo" data-slide-to="1"></li>
+	  <li data-target="#demo" data-slide-to="2"></li>
+	</ul>
+	
+	<!-- The slideshow -->
+	<div class="carousel-inner">
+	  <div class="carousel-item active">
+		<img src="https://i.pinimg.com/originals/3b/8a/d2/3b8ad2c7b1be2caf24321c852103598a.jpg" alt="Los Angeles" width="1100" height="500">
+	  </div>
+	  <div class="carousel-item">
+		<img src="https://wallpaperaccess.com/full/7285.jpg" alt="Chicago" width="1100" height="500">
+	  </div>
+	  <div class="carousel-item">
+		<img src="https://wallpaperplay.com/walls/full/1/4/b/15250.jpg" alt="New York" width="1100" height="500">
+	  </div>
+	</div>
+	
+	<!-- Left and right controls -->
+	<a class="carousel-control-prev" href="#demo" data-slide="prev">
+	  <span class="carousel-control-prev-icon"></span>
+	</a>
+	<a class="carousel-control-next" href="#demo" data-slide="next">
+	  <span class="carousel-control-next-icon"></span>
+	</a>
+  </div>
+
+  </body>
+  </html>
+
+</div>
+</div>
+</div>
+
+<div class="jumbotron">
+	<div class="container">
+		{% if request.user.is_authenticated %}
+	  <h4 class="display-8">Hello, {{request.user.username}} !</h4><hr>
+	  {% else %}
+	<h1>University Wellness Program</h1>
+	  <h1> About us </h1>
+	 <p>Here is where you put the introduction of UWP , University Wellness program(UWP)is an platform that can act as a tool,resource and a social media for sharing your contribution towards the growth of the university  </p>
+	<hr>
+	 {% endif %}
+
+		 {% if request.user.is_authenticated %}
+		 
+		  </a>
+		  
+			<p><a class="btn btn-primary" href="{% url 'account' %}" role = "button">My Account &raquo;</a>
+		  <a class="btn btn-primary" href="{% url 'blog:create' %}" role = "button">Create post &raquo;</a></p>
+		</div>
+	</div>
+		  
+		
+		  {% else %}
+		  <p><a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Register &raquo;</a>
+			<a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login &raquo;</a></p> 
+
+	<hr>	
+	 <div class="media">
+	  <div class="media-body">
+		<div class="media mt-3">
+		  <a class="pr-3" href="#">
+			<img class="circular--square" src="https://www.srmist.edu.in/sites/default/files/images/padmavathy-venkatasubramanian.jpg" alt="Generic placeholder image">
+			<hr>
+		  </a>
+		  <div class="row">
+			<div class="col-6 border-right"></div>
+			<div class="col-6"></div>
+		  </div>
+		  <div class="container">
+		  <div class="media-body">
+			<h5 class="mt-0">Dean's Message</h5>
+			While there are constant efforts to address old world diseases like malaria, diarrhea, and TB, 
+			there are new challenges like environmental pollution and climate change that affect public health. Changes in our lifestyle, diet and societal structure have had an additional impact on health. The rise in diseases like diabetes, cardiovascular conditions, cancer, and mental health are alarming. 
+			</div>
+				<div class="col-6"></div>
+			  </div>
+			<p><a class="btn btn-primary btn-lg" href="https://www.srmist.edu.in/medicine/health-sciences/school-public-health/about-the-department" role="button">More &raquo;</a> </p> 
+		</div>
+		  {% endif %}
+		</div>
+	</div>
+	</div> 
+	
 <div class="container">
-	<div class="row">
-
+<h1>Feed</h1>
+<hr>
 		<!-- blog feed -->
 		<div class="left-column col-lg-7 offset-lg-1">
 
-			<!-- Top 'create post' bar -->
+			<!-- Top 'create post' bar 
 			<div class="d-lg-none mb-3">
 				<div class="card m-auto d-flex flex-column p-3">
 					<img class="img-fluid d-block m-auto pb-2" src="{% static 'ubuntu-icon.svg' %}" width="72" height="72">
-					<p class="lead">In this course you'll learn how to build a simple blog with user registration and blog CRUD functionality. Django is a powerful 
-	  					framework and you'll see why in this course.</p>
+					<p class="lead">Let us know your ideas .</p>
 					<p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:create' %}">Create post</a></p>
 				</div>
-			</div>
+			</div>-->
 			<!-- end Top 'create post' bar -->
 
 			<!-- Blog posts-->
 			{% if blog_posts %}
 				{% for post in blog_posts %}
-					<div class="blog-post-container">
+						<div class="blog-post-container">
+							
 						{% include 'blog/snippets/blog_post_snippet.html' with blog_post=post %}
-					</div>
+						
+
+		</div>
 				{% endfor %}
 			{% else %}
-				<div class="blog-post-container">
+
+				<div class = "blog-post-container">
 					{% include 'blog/snippets/blog_post_snippet.html' with query=query %}
-				</div>
+				
+		</div>
 			{% endif %}
 			<!-- End Blog posts-->
-
-		<!-- Pagination -->
-		{% include 'blog/snippets/blog_post_pagination.html' with blog_posts=blog_posts %}
-
+			
 		</div>
 		<!-- end blog feed -->
 
-
-		<!-- Right 'create post' column  -->
-		<div class="right-column col-lg-3 d-lg-flex d-none flex-column">
-
-			<div class="card create-post-bar d-flex flex-column p-3">
-				<img class="img-fluid d-block m-auto pb-2" src="{% static 'codingwithmitch_logo.png' %}" width="72" height="72">
-				<p class="lead">In this course you'll learn how to build a simple blog with user registration and blog CRUD functionality. Django is a powerful 
-  					framework and you'll see why in this course.</p>
-				<p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:create' %}">Create post</a></p>
-			</div>
-		
-		</div>
-		<!-- end Right 'create post' column  -->
-
-
-
 	</div>
 </div>
-
-
+<!-- Pagination -->
+{% include 'blog/snippets/blog_post_pagination.html' with blog_posts=blog_posts %}
 {% endblock content %}
-
-
