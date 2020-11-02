@@ -46,10 +46,14 @@ virtualenv <your environment name >
 - Now you can create files and install dependencies that will be used only withing the environment created.
 
 ## How to Open the website that I created ?
+
 - Download files and check whether all pre-requisites are installed 
 - with Command prompt pointing in the src folder type,
 ```
-python manage.py runserver
+...\> python manage.py runserver
 ```
 - An ip-address that goes <kbd>http://127.0.0.1:8000/</kbd> will be returned 
 - Paste in your browser url and press enter to open the website.
+
+### Note:
+This is a project that I took up voluntarily to learn a thing or two about creating a website .
