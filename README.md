@@ -12,11 +12,15 @@
 - [Creating Django Basic Model with Admin access , Login , Registration and Accounts Screens ( A Basic Website )](https://www.youtube.com/watch?v=0hIMiq0YZSc&list=PLgCYzUzKIBE_dil025VAJnDjNZHHHR9mW&index=7) 
 - [Using and Experimenting with different Bootstrap (v4.5) to add CSS framework to the website.](https://www.youtube.com/watch?v=PKOdeXy9-6M&list=PLgCYzUzKIBE_dil025VAJnDjNZHHHR9mW&index=18)
 
-## Requisites
+## Pre-Requisites
 - Install [python3](https://www.python.org/downloads/)
+- Install Django
+```
+...\> py -m pip install Django
+```
 - Install Virtualenv 
 ```	
-pip install virtualenv
+...\> pip install virtualenv
 ```
 ## How to Create Python Virtual Environment ?
 - Open command prompt at the place you want to create the virtual Environment
@@ -41,4 +45,11 @@ virtualenv <your environment name >
 	
 - Now you can create files and install dependencies that will be used only withing the environment created.
 
-
+## How to Open the website that I created ?
+- Download files and check whether all pre-requisites are installed 
+- with Command prompt pointing in the src folder type,
+```
+python manage.py runserver
+```
+- An ip-address that goes <kbd>http://127.0.0.1:8000/</kbd> will be returned 
+- Paste in your browser url and press enter to open the website.
