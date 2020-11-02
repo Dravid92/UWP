@@ -7,4 +7,13 @@
 - I had zero knowledge in HTML and Django before starting this project .
 
 ## What have I learnt ?
-
+- Creating and working in Python virtual Environment 
+- Creating Django Basic Model with Admin access , Login , Registration and Accounts Screens ( A Basic Website ) 
+- Using and Experimenting with different Bootstrap (v4.5) to add CSS framework to the website.
+## Requisites
+- Install [python3](https://www.python.org/downloads/)
+- Open command prompt at the place you want to create the virtual Environment   ((<kbd>Shift</kbd> + <kbd>Right-click</kbd> ) and click on 'open command window here' )
+```
+```
+## How to Create Python Virtual Environment ?
+- 
