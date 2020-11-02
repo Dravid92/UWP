@@ -1,5 +1,6 @@
 # Project 4 - Beginner's Website Devlopment 
 
+### Credits : [Mitch](https://github.com/mitchtabian)
 ## [Resource](https://www.youtube.com/watch?v=i6cwBiz7BuQ&list=PLgCYzUzKIBE_dil025VAJnDjNZHHHR9mW)
 
 - This project is mainly about creating a simple website for my College's Wellness Program (UWP).The project is mainly done using **[Django(Python)](https://www.djangoproject.com/) and HTML**
@@ -7,13 +8,37 @@
 - I had zero knowledge in HTML and Django before starting this project .
 
 ## What have I learnt ?
-- Creating and working in Python virtual Environment 
-- Creating Django Basic Model with Admin access , Login , Registration and Accounts Screens ( A Basic Website ) 
-- Using and Experimenting with different Bootstrap (v4.5) to add CSS framework to the website.
+- [working in Python virtual Environment](https://www.youtube.com/watch?v=O9jEVOtpu5M&list=PLgCYzUzKIBE_dil025VAJnDjNZHHHR9mW&index=2)
+- [Creating Django Basic Model with Admin access , Login , Registration and Accounts Screens ( A Basic Website )](https://www.youtube.com/watch?v=0hIMiq0YZSc&list=PLgCYzUzKIBE_dil025VAJnDjNZHHHR9mW&index=7) 
+- [Using and Experimenting with different Bootstrap (v4.5) to add CSS framework to the website.](https://www.youtube.com/watch?v=PKOdeXy9-6M&list=PLgCYzUzKIBE_dil025VAJnDjNZHHHR9mW&index=18)
+
 ## Requisites
 - Install [python3](https://www.python.org/downloads/)
-- Open command prompt at the place you want to create the virtual Environment   ((<kbd>Shift</kbd> + <kbd>Right-click</kbd> ) and click on 'open command window here' )
-```
+- Install Virtualenv 
+```	
+pip install virtualenv
 ```
 ## How to Create Python Virtual Environment ?
-- 
+- Open command prompt at the place you want to create the virtual Environment
+			
+	<kbd>Shift</kbd> + <kbd>Right-click</kbd> and click on 'open command window here' 
+
+- Create virtual environment 
+```
+virtualenv <your environment name > 
+# Eg: virtualenv Dravidsenvironment'
+```
+- Activate virtual environment 
+	- Swtich to the directory 
+	```
+	cd <name of the environement created> 
+	# Eg: cd Dravidsenvironment
+	```
+	- Activate the environment
+	```
+	Scripts\activate
+	```
+	
+- Now you can create files and install dependencies that will be used only withing the environment created.
+
+
